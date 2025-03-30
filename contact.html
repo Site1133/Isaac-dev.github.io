@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Isaac Dev Contact</title>
+</head>
+<body>
+  <h1>
+  
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão de Tema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #6366F1, #4F46E5);
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(1px);
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            background-color: rgba(255, 255, 255, 0.3);
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <script>
+        // Botão de alternar tema
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        // Verifica se já existe uma preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Adiciona efeito de ondulação ao clicar
+        themeToggle.addEventListener('click', function(e) {
+            // Cria efeito de ondulação
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            
+            const x = e.clientX - e.target.getBoundingClientRect().left;
+            const y = e.clientY - e.target.getBoundingClientRect().top;
+            
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Alterna o tema
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>Contacto - WhatsApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-control, .contact-link {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .form-control:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .form-control:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .form-control:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .contact-link:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .contact-link:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .contact-link:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info, .contact-form {
+                min-width: 100%;
+            }
+        }
+        :root {
+            --primary-color: #00e676;
+            --dark-color: #121212;
+            --dark-secondary: #1e1e1e;
+            --text-color: #ffffff;
+            --shadow-color: rgba(0, 230, 118, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header h1 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-color), #4caf50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        header p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--dark-secondary);
+            border-radius: 10px;
+            padding: An2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-info h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.75rem;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background-color: rgba(0, 230, 118, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .contact-link i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--dark-secondary);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-form h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--shadow-color);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-submit:hover {
+            background-color: #00c853;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+        
+        .form-submit:active {
+            transform: translateY(0);
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            width: 0%;
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-control, .contact-link {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .form-control:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .form-control:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .form-control:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .contact-link:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .contact-link:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .contact-link:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info, .contact-form {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Fale Connosco</h1>
+            <p>Estamos disponíveis para ajudar. Preencha o formulário abaixo e entraremos em contacto consigo rapidamente através do WhatsApp.</p>
+        </header>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Informações de Contacto</h2>
+                <p>Utilize qualquer um dos métodos abaixo para entrar em contacto connosco ou preencha o formulário para enviarmos uma mensagem diretamente para o seu WhatsApp.</p>
+                
+                <div class="contact-links">
+                    <a href="#" class="contact-link">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+244947541761</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>isaacmuaco582@gmail.com</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Angola,Icolo e Bengo</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Enviar Mensagem</h2>
+                <form id="whatsappForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telemóvel</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <span>Enviar Mensagem</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulação da barra de progresso
+        const progressBar = document.getElementById('progressBar');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+        });
+        
+        // Formulário de WhatsApp
+        const whatsappForm = document.getElementById('whatsappForm');
+        
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular progresso de envio
+            progressBar.style.width = '0%';
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    sendWhatsAppMessage();
+                }
+            }, 50);
+        });
+        
+        function sendWhatsAppMessage() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Substitua pelo seu número de WhatsApp (formato internacional sem + ou espaços)
+            const whatsappNumber = "+244947541761";
+            
+            // Criar texto formatado para WhatsApp
+            const whatsappText = `*Novo contacto do website*
+*Nome:* ${name}
+*Telemóvel:* ${phone}
+*Email:* ${email}
+*Assunto:* ${subject}
+*Mensagem:* ${message}`;
+            
+            // Criar URL do WhatsApp
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+            
+            // Abrir WhatsApp em nova janela
+            window.open(whatsappURL, '_blank');
+            
+            // Limpar formulário
+            whatsappForm.reset();
+        }
+    </script>
+</body>
+</html>

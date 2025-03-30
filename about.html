@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Isaac Dev-about</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>Sobre Mim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #121212;
+            --secondary-color: #1a1a1a;
+            --accent-color: #4CAF50;
+            --accent-hover: #3e8e41;
+            --text-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background-color: var(--secondary-color);
+            margin-bottom: 3rem;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .profile {
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .bio h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .bio p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills {
+            margin-top: 3rem;
+        }
+        
+        .skills h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-section {
+            background-color: var(--secondary-color);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+            margin-top: 3rem;
+        }
+        
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile {
+                margin-bottom: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        /* Efeito dinâmico nos elementos */
+        .animated-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animated-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Barra de navegação */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão de Tema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #6366F1, #4F46E5);
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(1px);
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            background-color: rgba(255, 255, 255, 0.3);
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <script>
+        // Botão de alternar tema
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        // Verifica se já existe uma preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Adiciona efeito de ondulação ao clicar
+        themeToggle.addEventListener('click', function(e) {
+            // Cria efeito de ondulação
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            
+            const x = e.clientX - e.target.getBoundingClientRect().left;
+            const y = e.clientY - e.target.getBoundingClientRect().top;
+            
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Alterna o tema
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Isaac Dev <style>
+        /* Reset básico */
+        * {
+          justify-content: flex-end;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Container principal do logo */
+        .logo-wrapper {
+          justify-content: flex-end;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+            max-width: fit-content;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-wrapper:hover {
+          justify-content: flex-end;
+            transform: scale(1.05);
+        }
+        
+        /* Container da imagem */
+        .logo-img-container {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        /* Imagem do logo */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Texto do logo */
+        .logo-text {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #333;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: #00e676; /* Verde para destacar "Dev" */
+            font-weight: 900;
+        }
+        
+        /* Posicionamento (exemplo) */
+        .header-logo {
+          
+            
+            top: 158px;
+            left: 15px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo com texto -->
+    <div class="logo-wrapper header-logo">
+        <div class="logo-img-container">
+            <img src="https://imgur.com/ViKTXa1.jpg" alt="Logo Isaac Dev" class="logo-img">
+        </div></a>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --dark-bg: #000000;
+            --neon-green: #00ff00;
+            --medium-green: #00cc00;
+            --dark-green: #009900;
+            --text-color: #ffffff;
+            --card-bg: #111111;
+            --card-border: #222222;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--neon-green);
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--neon-green);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-top: 60px;
+        }
+        
+        .typing-text {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-right: 2px solid var(--neon-green);
+            white-space: nowrap;
+            width: 0;
+            animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--medium-green);
+            font-weight: 400;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--medium-green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--neon-green);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background: var(--neon-green);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.1);
+            border-color: var(--medium-green);
+        }
+        
+        .card-icon {
+            color: var(--neon-green);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .stats-section {
+            margin: 60px 0;
+            text-align: center;
+            background-color: rgba(0, 255, 0, 0.05);
+            padding: 60px 0;
+            border-radius: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--neon-green);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: var(--text-color);
+            margin: 0 15px;
+            font-size: 22px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: var(--neon-green);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-green) }
+        }
+        
+        /* Animated gradient border for active sections */
+        .active-card {
+            position: relative;
+            border: none;
+        }
+        
+        .active-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-green), transparent, var(--neon-green));
+            z-index: -1;
+            border-radius: 10px;
+            animation: border-animation 2s linear infinite;
+        }
+        
+        @keyframes border-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .typing-text {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 120px 0 60px;
+            }
+            
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Prevent zoom on touch devices */
+        input, 
+        textarea, 
+        select, 
+        button {
+            font-size: 16px; /* Prevents iOS zoom on focus */
+        }
+        
+        /* Additional Fixes */
+        html, body {
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body>
+  <link rel="icon" href="https://imgur.com/ViKTXa1.jpg" type="image/x-icon">
+<link rel="shortcut icon" href="https://imgur.com/ViKTXa1.jpg" type="image/x-icon">
+
+<!-- Favicon básico -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://imgur.com/ViKTXa1.jpg" type="image/x-icon">
+
+        </div>
+    </header>
+
+    <section class="hero animated-element">
+        <div class="container">
+            <h1>Sobre Mim</h1>
+            <p>Conheça mais sobre minha trajetória, habilidades e paixões.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="about-content">
+            <div class="profile animated-element">
+                <img src="https://imgur.com/mgYD74F.png" alt="Minha foto de perfil" class="profile-img">
+                <h3>Isaac Muaco</h3>
+                <p>Desenvolvedor & Designer</p>
+                <a href="contact.html" class="btn">Entre em contato</a>
+            </div>
+            
+            <div class="bio animated-element">
+                <h2>Minha História</h2>
+                <p>Olá! Sou um apaixonado por tecnologia e design, com experiência em desenvolvimento web e criação de interfaces interativas. Minha jornada começou há mais de 1 anos, quando me decidi explorar o mundo do desenvolvimento web.</p>
+                
+                <p>Durante minha carreira, trabalhei em 2 projetos desafiadores que me permitiram aprimorar minhas habilidades e expandir meu conhecimento. Sou movido pela busca constante de aprendizado e pela oportunidade de criar soluções que façam a diferença.</p>
+                
+                <p>Minha abordagem combina criatividade, pensamento analítico e foco na experiência do usuário. Acredito que a tecnologia deve ser acessível e intuitiva, permitindo que as pessoas se conectem e realizem seus objetivos com facilidade.</p>
+                
+                <div class="skills">
+                    <h3>Minhas Habilidades</h3>
+                    <div class="skill-list">
+                        <div class="skill-item animated-element">Desenvolvimento Front-end</div>
+                        <div class="skill-item animated-element">Design Web</div>
+                        <div class="skill-item animated-element">HTML5 & CSS3</div>
+                        <div class="skill-item animated-element">JavaScript</div>
+                        <div class="skill-item animated-element">Masterização no BANDLAB</div>
+                        <div class="skill-item animated-element">Node.js</div>
+                        <div class="skill-item animated-element">JSON</div>
+                        <div class="skill-item animated-element">Fire Base</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="contact-section">
+        <div class="container animated-element">
+            <h2>Vamos Conectar</h2>
+            <p>Interessado em colaborar ou saber mais sobre meu trabalho? Entre em contato comigo nas redes sociais ou envie uma mensagem direta.</p>
+            
+            <div class="social-links">
+              
+                <a href="https://github.com/site1133" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/isaac.muaco?igsh=YzljYTk1ODg3Zg==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              
+                <a href="mailto:isaacmuaco582@gmail.com" aria-label="Gmail"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Seu Nome. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para animação de elementos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated-element');
+            
+            function checkInView() {
+                animatedElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect();
+                    const isInView = (elementPosition.top <= window.innerHeight * 0.8);
+                    
+                    if (isInView) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Check on load
+            checkInView();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkInView);
+        });
+    </script>
+    
+    <!-- Script para Anúncios (Google AdSense) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-SEUCODIGO" crossorigin="anonymous"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

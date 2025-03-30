@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Isaac Dev</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão de Tema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #6366F1, #4F46E5);
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(1px);
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            background-color: rgba(255, 255, 255, 0.3);
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <script>
+        // Botão de alternar tema
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        // Verifica se já existe uma preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Adiciona efeito de ondulação ao clicar
+        themeToggle.addEventListener('click', function(e) {
+            // Cria efeito de ondulação
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            
+            const x = e.clientX - e.target.getBoundingClientRect().left;
+            const y = e.clientY - e.target.getBoundingClientRect().top;
+            
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Alterna o tema
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Isaac Dev | Full Stack Web Developer</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --dark-bg: #000000;
+            --neon-green: #00ff00;
+            --medium-green: #00cc00;
+            --dark-green: #009900;
+            --text-color: #ffffff;
+            --card-bg: #111111;
+            --card-border: #222222;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--neon-green);
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--neon-green);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-top: 60px;
+        }
+        
+        .typing-text {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-right: 2px solid var(--neon-green);
+            white-space: nowrap;
+            width: 0;
+            animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--medium-green);
+            font-weight: 400;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--medium-green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--neon-green);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background: var(--neon-green);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.1);
+            border-color: var(--medium-green);
+        }
+        
+        .card-icon {
+            color: var(--neon-green);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .stats-section {
+            margin: 60px 0;
+            text-align: center;
+            background-color: rgba(0, 255, 0, 0.05);
+            padding: 60px 0;
+            border-radius: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--neon-green);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: var(--text-color);
+            margin: 0 15px;
+            font-size: 22px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: var(--neon-green);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-green) }
+        }
+        
+        /* Animated gradient border for active sections */
+        .active-card {
+            position: relative;
+            border: none;
+        }
+        
+        .active-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-green), transparent, var(--neon-green));
+            z-index: -1;
+            border-radius: 10px;
+            animation: border-animation 2s linear infinite;
+        }
+        
+        @keyframes border-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .typing-text {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 120px 0 60px;
+            }
+            
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Prevent zoom on touch devices */
+        input, 
+        textarea, 
+        select, 
+        button {
+            font-size: 16px; /* Prevents iOS zoom on focus */
+        }
+        
+        /* Additional Fixes */
+        html, body {
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body>
+  <link rel="icon" href="https://imgur.com/ViKTXa1.jpg" type="image/x-icon">
+<link rel="shortcut icon" href="https://imgur.com/ViKTXa1.jpg" type="image/x-icon">
+
+<!-- Favicon básico -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://imgur.com/ViKTXa1.jpg" type="image/x-icon">
+
+<!-- Para dispositivos Apple -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://imgur.com/ViKTXa1.jpg">
+
+<!-- Para navegadores modernos utilizando SVG -->
+<link rel="icon" type="image/svg+xml" href="https://imgur.com/ViKTXa1.jpg">
+
+<!-- Para Windows Tiles -->
+<meta name="msapplication-TileColor" content="#00e676">
+<meta name="msapplication-TileImage" content="mstile-144x144.png">
+    <header>
+        <div class="container">
+            <div class="logo">Isaac Dev  <style>
+        /* Reset básico */
+        * {
+          justify-content: flex-end;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Container principal do logo */
+        .logo-wrapper {
+          justify-content: flex-end;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+            max-width: fit-content;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-wrapper:hover {
+          justify-content: flex-end;
+            transform: scale(1.05);
+        }
+        
+        /* Container da imagem */
+        .logo-img-container {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        /* Imagem do logo */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Texto do logo */
+        .logo-text {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #333;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: #00e676; /* Verde para destacar "Dev" */
+            font-weight: 900;
+        }
+        
+        /* Posicionamento (exemplo) */
+        .header-logo {
+          justify-content: flex-end;
+            
+            top: 158px;
+            left: 15px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo com texto -->
+    <div class="logo-wrapper header-logo">
+        <div class="logo-img-container">
+            <img src="https://imgur.com/ViKTXa1.jpg" alt="Logo Isaac Dev" class="logo-img">
+        </div>
+  
+    </div></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#about">Skills</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="typing-text">Hello, I'm Isaac</h1>
+        
+            <p class="subtitle">Full Stack Web desenvolvedor</p>
+            <a href="#contact" class="cta-button">Fale Comigo</a>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Eu sou apaixonado em Full Stack Web Developer,tenho também aulas dadas por meu mentor que é o João Dev,ele me ensina oque é terminar com fracas soluções e tornal algo supervisionárias.</p>
+            
+            <div class="card-grid">
+                <div class="card active-card">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Experience</h3>
+                    <p>Trabalho de forma Temporária 24/4horas dependendo do modo que alguém vai interagir comigo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Educação</h3>
+                    <p>Estudo na escola do Ipps e faço a 10ªclasse no ensino médio, No IPPS(Instituto Politécnico Privado do Sequele),cursei em Técnico de Informática(software e Hardware).</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Skills</h3>
+                    <p>Experiente em Node.js,html,css,fire base,masterização no Bandlab,etc.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Creative Approach</h3>
+                    <p>Não gosto muito de sair em casa, trabalho mais em casa em relação de fora para não estragar a minha criatividade pessoal e cognitivo, prefiro estudar mais em Jogae bola e outras coisas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats-section">
+        <div class="container">
+            <h2>Minha Jornada:</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">0+</div>
+                    <p>Clients Served</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1+</div>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2+</div>
+                    <p>Anos de Experiência</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1%</div>
+                    <p>Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Isaac Dev. Todos Direitos Reservados.</p>
+            <div class="social-icons">
+                <a href="https://github.com/site1133" target="_blank"><i class="fab fa-github"></i></a>
+        
+         
+                <a href="mailto:contact@isaacmuaco582@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dynamic text animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize typing animation
+            const typingTextElement = document.querySelector('.typing-text');
+            typingTextElement.style.width = '0';
+            
+            setTimeout(() => {
+                typingTextElement.style.animation = 'typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite';
+            }, 500);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
